@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Text, View, Image, StyleSheet} from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import ScrollingBackground from 'react-native-scrolling-images';
+
+export default class App extends React.Component {
+  render() {
+    return (
+   
+        <View style={styles.container}>
+          <ScrollingBackground
+            style={styles.scrollingBackground}
+            speed={60}
+            direction={"up"}
+            images={[require("./assets/sheep.png")]}
+            useNativeDriver={true}
+          />
+          <View style={styles.welcomecircle}>
+        <Image style={styles.actualcircle} source={require('./assets/welcomecircle.png')}
+        resizeMode='contain' />
+        </View>
+        </View>
+  
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%"
   },
+  scrollingBackground: {
+    backgroundColor: "#0B7483"
+  },
+  welcomecircle: {
+    flex: 1,
+    position: "absolute",
+    alignItems: "center", 
+    justifyContent: "center"
+  },
+  actualcircle: {
+    width: 420
+  }
 });
