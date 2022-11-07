@@ -3,8 +3,11 @@ import { View, Text, Pressable, StyleSheet, ImageBackground } from "react-native
 function MainScreen() {
   return ( 
       <ImageBackground style={styles.image} source={require('./assets/test-background.png')} resizeMode="cover">
-        <Pressable style={styles.button} onPress={() => console.log('test')}> 
-          <Text>Testing</Text>
+        <Pressable style={styles.circleOne} onPress={() => console.log('1')}> 
+          <Text style={styles.text}> 1 </Text>
+        </Pressable>
+        <Pressable style={styles.circleTwo} onPress={() => console.log('2')}> 
+          <Text style={styles.text}> 2 </Text>
         </Pressable>
       </ImageBackground>
    );
@@ -17,21 +20,29 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: "center"
   },
-  button: {
-    height: 30,
-    position: 'absolute',
-    left: 20,
-    width: 30,
-    backgroundColor: "blue",
-    color: 'blue'
+  circleOne: {
+    left: 50,
+    top: 100,
+    width: 70,
+    height: 70,
+    borderRadius: 70/2,
+    backgroundColor: "blue"
+  },
+  circleTwo: {
+    left: 150,
+    top: 30,
+    width: 70,
+    height: 70,
+    borderRadius: 70/2,
+    backgroundColor: "blue"
   },
   text: {
     color: "white",
-    fontSize: 42,
+    fontSize: 32,
     lineHeight: 84,
-    fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#000000c0"
+    left: -4,
+    top: -6
   }
 });
 
