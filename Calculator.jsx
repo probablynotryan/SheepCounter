@@ -16,8 +16,12 @@ export default function Calculator(props) {
           <Text style={calculatorStyles.pressableText}>{number}</Text>
         </Pressable>
         )}
-        <Pressable key={10} style={calculatorStyles.pressable} onPress={() => props.subtractNumber()}>
-        <Text>D</Text>
+        <Pressable key={10} style={calculatorStyles.pressableDelete} onPress={() => props.subtractNumber()}>
+        </Pressable>
+        <Pressable key={0} style={calculatorStyles.pressable} onPress={() => props.addNumber(0)}>
+          <Text style={calculatorStyles.pressableText}>0</Text>
+        </Pressable>
+        <Pressable key={11} style={calculatorStyles.pressableSubmit} onPress={() => props.subtractNumber()}>
         </Pressable>
       </View>
    );
@@ -40,21 +44,41 @@ const calculatorStyles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     position: 'relative',
-    top: 350,
+    top: 490,
     justifyContent: 'center'
   },
   pressable: {
-    margin: 17,
+    marginRight: 23,
+    marginLeft: 25,
+    marginBottom: 19,
     backgroundColor: 'blue',
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
     borderRadius: 40
   },
+  pressableSubmit: {
+    marginRight: 23,
+    marginLeft: 25,
+    marginBottom: 19,
+    backgroundColor: 'green',
+    width: 70,
+    height: 70,
+    borderRadius: 40
+  },
+  pressableDelete: {
+    marginRight: 29,
+    marginLeft: 25,
+    marginBottom: 19,
+      backgroundColor: 'red',
+      width: 70,
+      height: 70,
+      borderRadius: 40
+    },
   pressableText: {
-    fontSize: 50,
+    fontSize: 38,
     textAlign: 'center',
     alignItems: 'center',
-    top: 8,
+    top: 11,
     color: 'white'
   },
   inputText: {

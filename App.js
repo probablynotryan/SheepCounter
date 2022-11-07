@@ -18,12 +18,12 @@ export default class App extends React.Component {
 
   handleCalculatorAdd = (input) => { this.setState(prevState => {
     if (prevState.inputField.length > 12) return;
-    if (prevState.inputField === '0') return {inputField: input};
+    if (prevState.inputField === '0') return {inputField: input.toString()};
     let newNumber = prevState.inputField + input.toString();
     return ({inputField: newNumber})
   })
 }
-
+ 
   handleCalculatorDelete = () => { this.setState(prevState => {
     if (prevState.inputField.length > 1) {
       let removeOne = prevState.inputField.substring(1);
