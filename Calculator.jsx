@@ -9,23 +9,27 @@ export default function Calculator(props) {
       <View style={styles.inputField}>
         <Text style={styles.inputText}>{props.inputField}</Text>
       </View>
-      {[1, 4, 7].map((row) => (
-        <View style={styles.buttonsContainer}>
-          {[row, row + 1, row + 2].map((number) => (
-            <Pressable
-              key={number}
-              style={styles.pressable}
-              onPress={() => props.addNumber(number)}
-            >
-              <Text style={styles.pressableText}>{number}</Text>
-            </Pressable>
-          ))}
-        </View>
-      ))}
+      {[1, 4, 7].map(
+        (
+          row // New rows at 1, 4, and 7
+        ) => (
+          <View style={styles.buttonsContainer}>
+            {[row, row + 1, row + 2].map((number) => (
+              <Pressable
+                key={number}
+                style={styles.pressable}
+                onPress={() => props.addNumber(number)}
+              >
+                <Text style={styles.pressableText}>{number}</Text>
+              </Pressable>
+            ))}
+          </View>
+        )
+      )}
       <View style={styles.buttonsContainer}>
         <Pressable
           key={10}
-          style={styles.pressableDelete}
+          style={[styles.pressable, styles.pressableDelete]}
           onPress={() => props.subtractNumber()}
         ></Pressable>
         <Pressable
@@ -37,7 +41,7 @@ export default function Calculator(props) {
         </Pressable>
         <Pressable
           key={11}
-          style={styles.pressableSubmit}
+          style={[styles.pressable, styles.pressableSubmit]}
           onPress={() => props.subtractNumber()}
         ></Pressable>
       </View>
@@ -78,15 +82,9 @@ const styles = StyleSheet.create({
   },
   pressableSubmit: {
     backgroundColor: "green",
-    width: 70,
-    height: 70,
-    borderRadius: 40,
   },
   pressableDelete: {
     backgroundColor: "red",
-    width: 70,
-    height: 70,
-    borderRadius: 40,
   },
   pressableText: {
     fontSize: 38,
