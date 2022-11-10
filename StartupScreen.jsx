@@ -1,9 +1,9 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet} from 'react-native';
-import ScrollingBackground from 'react-native-scrolling-images';
+import React from "react";
+import { Dimensions, Text, View, Image, StyleSheet } from "react-native";
+import ScrollingBackground from "react-native-scrolling-images";
 
 export default function StartupScreen() {
-  return ( 
+  return (
     <View style={styles.container}>
       <ScrollingBackground
         style={styles.scrollingBackground}
@@ -13,30 +13,29 @@ export default function StartupScreen() {
         useNativeDriver={true}
       />
       <View style={styles.welcomecircle}>
-        <Image style={styles.actualcircle} source={require('./assets/welcomecircle.png')}
-        resizeMode='contain' />
+        <Image
+          style={styles.actualcircle}
+          source={require("./assets/welcomecircle.png")}
+          resizeMode="contain"
+        />
       </View>
     </View>
-   );   
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
-    height: "100%"
   },
   scrollingBackground: {
-    backgroundColor: "#0B7483"
+    backgroundColor: "#0B7483",
   },
   welcomecircle: {
-    flex: 1,
     position: "absolute",
-    alignItems: "center", 
-    justifyContent: "center"
   },
   actualcircle: {
-    width: 420
-  }
+    width: Dimensions.get("window").width,
+  },
 });
