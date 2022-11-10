@@ -11,16 +11,10 @@ export default class App extends React.Component {
     this.state = {
       currentWindow: "Welcome Screen",
       inputField: "0",
-      currentSheepCount: 0,
+      currentSheepCount: 1,
     };
   }
 
-  handleMoveBall = () => {
-    Animated.timing(this.ball, {
-      toValue: { x: 250, y: 350 },
-      duration: 2000,
-    }).start();
-  };
   handleCalculatorAdd = (input) => {
     this.setState((prevState) => {
       if (prevState.inputField.length > 12) return;
@@ -36,7 +30,22 @@ export default class App extends React.Component {
         let removeOne = prevState.inputField.substring(1);
         return { inputField: removeOne };
       } else {
-        return { inputField: "0" };
+        return { inputField: "" };
+      }
+    });
+  };
+
+  handleCheckNumber = () => {
+    this.setState((prevState) => {
+      if (parseInt(prevState.inputField) == this.state.currentSheepCount) {
+        return {
+          inputField: "",
+          currentSheepCount: prevState.currentSheepCount + 1,
+        };
+      } else {
+        return {
+          inputField: "",
+        };
       }
     });
   };
@@ -55,7 +64,7 @@ export default class App extends React.Component {
           inputField={this.state.inputField}
           addNumber={this.handleCalculatorAdd}
           subtractNumber={this.handleCalculatorDelete}
-          moveBall={this.handleMoveBall}
+          checkNumber={this.handleCheckNumber}
         />
       </View>
     );

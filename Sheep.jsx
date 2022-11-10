@@ -15,6 +15,10 @@ export default function Sheep() {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0Kav3oeX79EJoNMEsHaUOHGLn79t9QOZaQ&usqp=CAU";
 
   useEffect(() => {
+    moveIt();
+  }, []);
+
+  const moveIt = () => {
     Animated.timing(translationX, {
       toValue: -170,
       duration: 2000,
@@ -25,7 +29,7 @@ export default function Sheep() {
       duration: 2000,
       useNativeDriver: true,
     }).start();
-  }, []);
+  };
 
   const onPress = () => {
     Animated.timing(translationX, {

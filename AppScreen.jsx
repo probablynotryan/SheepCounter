@@ -15,6 +15,7 @@ function MainScreen(props) {
         inputField={props.inputField}
         addNumber={props.addNumber}
         subtractNumber={props.subtractNumber}
+        checkNumber={props.checkNumber}
       ></Calculator>
     </ImageBackground>
   );

@@ -42,7 +42,7 @@ export default function Calculator(props) {
         <Pressable
           key={11}
           style={[styles.pressable, styles.pressableSubmit]}
-          onPress={() => props.subtractNumber()}
+          onPress={() => props.checkNumber()}
         ></Pressable>
       </View>
     </View>
