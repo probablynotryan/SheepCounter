@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Animated } from "react-native";
 import StartupScreen from "./StartupScreen";
 import AppScreen from "./AppScreen";
 
@@ -15,6 +15,12 @@ export default class App extends React.Component {
     };
   }
 
+  handleMoveBall = () => {
+    Animated.timing(this.ball, {
+      toValue: { x: 250, y: 350 },
+      duration: 2000,
+    }).start();
+  };
   handleCalculatorAdd = (input) => {
     this.setState((prevState) => {
       if (prevState.inputField.length > 12) return;
@@ -49,6 +55,7 @@ export default class App extends React.Component {
           inputField={this.state.inputField}
           addNumber={this.handleCalculatorAdd}
           subtractNumber={this.handleCalculatorDelete}
+          moveBall={this.handleMoveBall}
         />
       </View>
     );
