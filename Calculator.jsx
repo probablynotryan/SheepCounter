@@ -13,7 +13,7 @@ export default function Calculator(props) {
         (
           row // New rows at 1, 4, and 7
         ) => (
-          <View style={styles.buttonsContainer}>
+          <View key={111 * row} style={styles.buttonsContainer}>
             {[row, row + 1, row + 2].map((number) => (
               <Pressable
                 key={number}
