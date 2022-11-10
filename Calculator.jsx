@@ -1,86 +1,88 @@
 import React from "react";
-import { Pressable, Text, View, StyleSheet } from "react-native";
+import { Dimensions, Pressable, Text, View, StyleSheet } from "react-native";
 
 // let numbers = [1 ...9];
 
 export default function Calculator(props) {
   return (
-    <View style={calculatorStyles.pressableView}>
-      <View style={calculatorStyles.inputField}>
-        <Text style={calculatorStyles.inputText}>{props.inputField}</Text>
+    <View style={styles.keypadContainer}>
+      <View style={styles.inputField}>
+        <Text style={styles.inputText}>{props.inputField}</Text>
       </View>
-      {[...new Array(9).keys()].map((number) => (
-        <Pressable
-          key={number + 1}
-          style={calculatorStyles.pressable}
-          onPress={() => props.addNumber(number + 1)}
-        >
-          <Text style={calculatorStyles.pressableText}>{number + 1}</Text>
-        </Pressable>
+      {[1, 4, 7].map((row) => (
+        <View style={styles.buttonsContainer}>
+          {[row, row + 1, row + 2].map((number) => (
+            <Pressable
+              key={number}
+              style={styles.pressable}
+              onPress={() => props.addNumber(number)}
+            >
+              <Text style={styles.pressableText}>{number}</Text>
+            </Pressable>
+          ))}
+        </View>
       ))}
-      <Pressable
-        key={10}
-        style={calculatorStyles.pressableDelete}
-        onPress={() => props.subtractNumber()}
-      ></Pressable>
-      <Pressable
-        key={0}
-        style={calculatorStyles.pressable}
-        onPress={() => props.addNumber(0)}
-      >
-        <Text style={calculatorStyles.pressableText}>0</Text>
-      </Pressable>
-      <Pressable
-        key={11}
-        style={calculatorStyles.pressableSubmit}
-        onPress={() => props.subtractNumber()}
-      ></Pressable>
+      <View style={styles.buttonsContainer}>
+        <Pressable
+          key={10}
+          style={styles.pressableDelete}
+          onPress={() => props.subtractNumber()}
+        ></Pressable>
+        <Pressable
+          key={0}
+          style={styles.pressable}
+          onPress={() => props.addNumber(0)}
+        >
+          <Text style={styles.pressableText}>0</Text>
+        </Pressable>
+        <Pressable
+          key={11}
+          style={styles.pressableSubmit}
+          onPress={() => props.subtractNumber()}
+        ></Pressable>
+      </View>
     </View>
   );
 }
 
-const calculatorStyles = StyleSheet.create({
+const styles = StyleSheet.create({
+  keypadContainer: {
+    flexDirection: "column",
+    height: Dimensions.get("window").height / 2,
+    top: Dimensions.get("window").height / 4,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
   inputField: {
-    width: "80%",
+    width: "85%",
     height: 60,
-    top: -20,
     borderRadius: 20,
     backgroundColor: "white",
     justifyContent: "center",
-    alignItems: "flex-end",
-    paddingRight: 20,
-    marginBottom: 20,
+    alignItems: "flex-start",
+    paddingLeft: 20,
   },
-  pressableView: {
-    flex: 1,
-    flexWrap: "wrap",
+  inputText: {
+    fontSize: "40",
+  },
+  buttonsContainer: {
+    width: "90%",
     flexDirection: "row",
-    position: "relative",
-    top: 490,
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   pressable: {
-    marginRight: 23,
-    marginLeft: 25,
-    marginBottom: 19,
     backgroundColor: "blue",
     width: 70,
     height: 70,
     borderRadius: 40,
   },
   pressableSubmit: {
-    marginRight: 23,
-    marginLeft: 25,
-    marginBottom: 19,
     backgroundColor: "green",
     width: 70,
     height: 70,
     borderRadius: 40,
   },
   pressableDelete: {
-    marginRight: 29,
-    marginLeft: 25,
-    marginBottom: 19,
     backgroundColor: "red",
     width: 70,
     height: 70,
@@ -92,8 +94,5 @@ const calculatorStyles = StyleSheet.create({
     alignItems: "center",
     top: 11,
     color: "white",
-  },
-  inputText: {
-    fontSize: 40,
   },
 });
