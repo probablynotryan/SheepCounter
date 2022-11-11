@@ -13,9 +13,6 @@ export default function Sheep(props) {
   const translationY = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
-  let sheepAirborne =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0Kav3oeX79EJoNMEsHaUOHGLn79t9QOZaQ&usqp=CAU";
-
   useEffect(() => {
     if (props.stepsToDeath) {
       jumpIn();
@@ -63,7 +60,7 @@ export default function Sheep(props) {
     }).start();
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 2000,
+      duration: 1700,
       useNativeDriver: true,
     }).start();
   };
@@ -86,9 +83,7 @@ export default function Sheep(props) {
         }}
       >
         <Image
-          source={{
-            uri: sheepAirborne,
-          }}
+          source={require("./assets/cutesheep.png")}
           style={styles.sheep}
         />
       </Animated.View>

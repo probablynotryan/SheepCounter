@@ -1,6 +1,5 @@
 import React from "react";
-import Sheep from "./Sheep";
-import { View, Animated } from "react-native";
+import { View } from "react-native";
 import StartupScreen from "./StartupScreen";
 import AppScreen from "./AppScreen";
 
@@ -11,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       currentWindow: "Welcome Screen",
-      inputField: "0",
+      inputField: "",
       currentSheepCount: 1,
       stepsToDeath: true,
     };
@@ -29,8 +28,7 @@ export default class App extends React.Component {
   handleCalculatorDelete = () => {
     this.setState((prevState) => {
       if (prevState.inputField.length > 1) {
-        let removeOne = prevState.inputField.substring(1);
-        return { inputField: removeOne };
+        return { inputField: prevState.inputField.slice(0, -1) };
       } else {
         return { inputField: "" };
       }
