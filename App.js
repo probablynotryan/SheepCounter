@@ -1,4 +1,5 @@
 import React from "react";
+import Sheep from "./Sheep";
 import { View, Animated } from "react-native";
 import StartupScreen from "./StartupScreen";
 import AppScreen from "./AppScreen";
@@ -12,6 +13,7 @@ export default class App extends React.Component {
       currentWindow: "Welcome Screen",
       inputField: "0",
       currentSheepCount: 1,
+      stepsToDeath: true,
     };
   }
 
@@ -35,14 +37,22 @@ export default class App extends React.Component {
     });
   };
 
+  handleNewStep = () => {
+    this.setState((prevState) => {
+      return { stepsToDeath: !prevState.stepsToDeath };
+    });
+  };
+
   handleCheckNumber = () => {
     this.setState((prevState) => {
       if (parseInt(prevState.inputField) == this.state.currentSheepCount) {
         return {
+          stepsToDeath: !prevState.stepsToDeath,
           inputField: "",
           currentSheepCount: prevState.currentSheepCount + 1,
         };
       } else {
+        console.log("psst. it's " + prevState.currentSheepCount);
         return {
           inputField: "",
         };
@@ -65,6 +75,9 @@ export default class App extends React.Component {
           addNumber={this.handleCalculatorAdd}
           subtractNumber={this.handleCalculatorDelete}
           checkNumber={this.handleCheckNumber}
+          currentSheepCount={this.state.currentSheepCount}
+          stepsToDeath={this.state.stepsToDeath}
+          addNewStep={this.handleNewStep}
         />
       </View>
     );

@@ -10,7 +10,13 @@ function MainScreen(props) {
       source={require("./assets/test-background.png")}
       resizeMode="cover"
     >
-      <Sheep />
+      <Sheep
+        key={props.stepsToDeath}
+        addNewStep={props.addNewStep}
+        stepsToDeath={props.stepsToDeath}
+        currentSheepCount={props.currentSheepCount}
+        checkNumber={props.checkNumber}
+      />
       <Calculator
         inputField={props.inputField}
         addNumber={props.addNumber}
