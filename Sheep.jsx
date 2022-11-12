@@ -1,8 +1,7 @@
-import React, { componentWillMount, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
-  View,
+  Dimensions,
   Image,
-  Text,
   Animated,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -14,11 +13,12 @@ export default function Sheep(props) {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    console.log(Dimensions.get("window").height);
     if (props.stepsToDeath) {
       jumpIn();
     } else {
-      translationX.setValue(-200);
-      translationY.setValue(200);
+      translationX.setValue(-(Dimensions.get("window").width / 2 + 45));
+      translationY.setValue(Dimensions.get("window").height / 4 - 90);
       fadeAnim.setValue(1);
       console.log(props.stepsToDeath);
       jumpOut();
@@ -31,12 +31,12 @@ export default function Sheep(props) {
 
   const jumpIn = () => {
     Animated.timing(translationX, {
-      toValue: -200,
+      toValue: -(Dimensions.get("window").width / 2 + 45),
       duration: 2000,
       useNativeDriver: true,
     }).start();
     Animated.timing(translationY, {
-      toValue: 200,
+      toValue: Dimensions.get("window").height / 4 - 90,
       duration: 2000,
       useNativeDriver: true,
     }).start();
@@ -49,7 +49,7 @@ export default function Sheep(props) {
 
   const jumpOut = () => {
     Animated.timing(translationX, {
-      toValue: -400,
+      toValue: -(Dimensions.get("window").width + 120),
       duration: 2000,
       useNativeDriver: true,
     }).start();
@@ -60,7 +60,7 @@ export default function Sheep(props) {
     }).start();
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 1700,
+      duration: 1800,
       useNativeDriver: true,
     }).start();
   };
@@ -71,10 +71,11 @@ export default function Sheep(props) {
         style={{
           position: "absolute",
           opacity: fadeAnim,
-          left: 340,
-          top: 140,
+          top: Dimensions.get("screen").height / 4,
+          left: Dimensions.get("window").width,
           width: 90,
           height: 90,
+          backgroundColor: "white",
           alignItems: "center",
           transform: [
             { translateX: translationX },

@@ -30,6 +30,7 @@ function MainScreen(props) {
 const styles = StyleSheet.create({
   image: {
     flex: 1,
+    backgroundColor: "white",
     resizeMode: "contain",
     justifyContent: "center",
   },
