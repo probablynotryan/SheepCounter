@@ -18,7 +18,7 @@ export default function Sheep(props) {
       jumpIn();
     } else {
       translationX.setValue(-(Dimensions.get("window").width / 2 + 45));
-      translationY.setValue(Dimensions.get("window").height / 4 - 90);
+      translationY.setValue(Dimensions.get("window").height / 4 - 75);
       fadeAnim.setValue(1);
       console.log(props.stepsToDeath);
       jumpOut();
@@ -36,7 +36,7 @@ export default function Sheep(props) {
       useNativeDriver: true,
     }).start();
     Animated.timing(translationY, {
-      toValue: Dimensions.get("window").height / 4 - 90,
+      toValue: Dimensions.get("window").height / 4 - 75,
       duration: 2000,
       useNativeDriver: true,
     }).start();
@@ -75,7 +75,6 @@ export default function Sheep(props) {
           left: Dimensions.get("window").width,
           width: 90,
           height: 90,
-          backgroundColor: "white",
           alignItems: "center",
           transform: [
             { translateX: translationX },

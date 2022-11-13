@@ -51,6 +51,7 @@ export default function Calculator(props) {
 
 const styles = StyleSheet.create({
   keypadContainer: {
+    paddingTop: 40,
     flexDirection: "column",
     height: Dimensions.get("window").height / 2,
     top: Dimensions.get("window").height / 4,
@@ -58,39 +59,46 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   inputField: {
-    width: "85%",
-    height: 60,
-    borderRadius: 20,
-    backgroundColor: "white",
+    width: "75%",
+    height: 50,
+    borderRadius: 55,
+    borderColor: "black",
+    borderWidth: 1,
+    backgroundColor: "lightgray",
     justifyContent: "center",
     alignItems: "flex-start",
     paddingLeft: 20,
+    top: -20,
   },
   inputText: {
     fontSize: "40",
   },
   buttonsContainer: {
+    top: -20,
+    height: "15%",
     width: "90%",
     flexDirection: "row",
     justifyContent: "space-around",
   },
   pressable: {
-    backgroundColor: "blue",
-    width: 70,
-    height: 70,
-    borderRadius: 40,
+    backgroundColor: "lightgray",
+    width: "17%",
+    height: "100%",
+    borderRadius: 800,
+    borderColor: "gray",
+    borderWidth: 1,
   },
   pressableSubmit: {
-    backgroundColor: "green",
+    backgroundColor: "lightblue",
   },
   pressableDelete: {
     backgroundColor: "red",
   },
   pressableText: {
+    top: 6,
     fontSize: 38,
     textAlign: "center",
     alignItems: "center",
-    top: 11,
-    color: "white",
+    color: "black",
   },
 });
